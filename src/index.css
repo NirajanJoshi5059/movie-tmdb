@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+@layer components {
+
+  .btn {
+    @apply bg-black text-white px-5 py-5 ring-green-800 ring-4
+  }
+
+
+}
