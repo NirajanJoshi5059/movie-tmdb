@@ -1,18 +1,16 @@
 import React from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { imageUrl } from '../features/constants';
+import Loading from '../components/Loading';
+import { useGetMovieByPageQuery } from '../features/movieApi';
 
 const MoviePage = () => {
     const { category, page } = useParams();
-    const { isError, isLoading, data, error } = useGetMovieByCategoryQuery(category ?? 'now_playing');
+    const { isError, isLoading, data, error } = useGetMovieByPageQuery({category, page});
     const nav = useNavigate();
 
     if (isLoading) {
-
         return <Loading />
-        // return <div className="w-[400px] mx-auto mt-7">
-        //   <lottie-player src="https://lottie.host/a34aa213-baac-460e-9721-538334cb6778/HiYE1YFskx.json" background="#ffffff" speed="1" loop autoplay direction="1" mode="normal"></lottie-player>
-        // </div>
     }
 
 
@@ -21,7 +19,7 @@ const MoviePage = () => {
 
             {data && data.results.map((movie) => {
                 return <div
-                    onClick={() => nav(`movieDetail/${movie.id}`)}
+                    onClick={() => nav(`/movieDetail/${movie.id}`)}
                     className="cursor-pointer hover:scale-110 h-[500px] overflow-hidden duration-300 ease-in" key={movie.id}>
                     <img className="w-full h-[350px]" src={`${imageUrl}${movie.poster_path}`} alt="" />
                     <div className="p-2 shadow-lg">
@@ -33,11 +31,12 @@ const MoviePage = () => {
             })}
         </div>
 
-        <div className="flex justify-center space-x-3 my-4">
-            {data?.page !== 1 &&
-                <button className="bg-black">Prev</button>}
+        <div className="flex justify-center space-x-3 my-7">
+            <button onClick={()=>nav(-1)} disabled={data?.page ===1 ? true :false} 
+            className={data?.page ==1 ? "bg-gray-500 text-white px-3 py-1 rounded-lg":"bg-black text-white px-3 py-1 rounded-lg"}>Prev</button>
             <h1 className="text-lg">{data?.page}</h1>
-            <button onClick={() => nav(`/movie/page/1`)} className="bg-black text-white px-3 py-1 rounded-lg">Next</button>
+            <button onClick={() => nav(`/movie/${category}/${data?.page + 1}`)}
+                className="bg-black text-white px-3 py-1 rounded-lg">Next</button>
         </div>
     </>
     )

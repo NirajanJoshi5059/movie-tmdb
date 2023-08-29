@@ -21,7 +21,7 @@ const MovieByCategory = () => {
 
         {data && data.results.map((movie) => {
           return <div
-            onClick={() => nav(`movieDetail/${movie.id}`)}
+            onClick={() => nav(`/movieDetail/${movie.id}`)}
             className="cursor-pointer hover:scale-110 h-[500px] overflow-hidden duration-300 ease-in" key={movie.id}>
             <img className="w-full h-[350px]" src={`${imageUrl}${movie.poster_path}`} alt="" />
             <div className="p-2 shadow-lg">
@@ -34,10 +34,12 @@ const MovieByCategory = () => {
       </div>
 
       <div className="flex justify-center space-x-3 my-4">
-        {data?.page !== 1 &&
-          <button className="bg-black">Prev</button>}
-        <h1 className="text-lg">{data?.page}</h1>
-        <button onClick={() => nav(`/movie/page/${data?.page}`)} className="bg-black text-white px-3 py-1 rounded-lg">Next</button>
+        <button  disabled={data?.page === 1 ? true : false}
+          className="bg-gray-500 text-white px-3 py-1 rounded-lg">Prev</button>
+        <h1 className="text-xl">{data?.page}</h1>
+        <button onClick={() => nav(`/movie/now_playing/${data?.page + 1}`)}
+          className="bg-black text-white px-3 py-1 rounded-lg">Next</button>
+
       </div>
     </>
   )

@@ -30,7 +30,7 @@ const Header = () => {
       <nav className="space-x-5 flex sm:hidden col-span-2">
         <NavLink to='/movie/popular'>Popular</NavLink>
         <NavLink to='/movie/top_rated'>Top Rated</NavLink>
-        <NavLink to='movie/upcoming'>Upcoming</NavLink>
+        <NavLink to='/movie/upcoming'>Upcoming</NavLink>
       </nav>
       <div >
         <SearchCompo />

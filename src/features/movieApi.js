@@ -42,7 +42,7 @@ export const movieApi = createApi({
           'Authorization': accessToken
         },
         params: {
-          page: 1
+          page: query.page
         }
       })
     }),
@@ -79,7 +79,7 @@ export const movieApi = createApi({
 });
 
 
-export const { useGetMovieByCategoryQuery, useGetMovieDetailQuery, 
+export const { useGetMovieByCategoryQuery, useGetMovieDetailQuery,
   useGetMovieVideoQuery, useGetMovieByPageQuery,
   useGetSearchMovieQuery } = movieApi;
 
