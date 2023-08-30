@@ -17,7 +17,7 @@ const MovieByCategory = () => {
 
   return (
     <>
-      <div className="grid grid-cols-4 gap-y-11 gap-x-4 px-4 mt-7 items-center">
+      <div className="grid grid-cols-4 gap-y-11 gap-x-4 px-4 mt-7 items-center scr">
 
         {data && data.results.map((movie) => {
           return <div

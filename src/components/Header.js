@@ -21,7 +21,6 @@ const Header = () => {
           <NavLink to='/contact-us'>Contact</NavLink>
         </nav>
         }
-
       </div>
 
       {show ? <button onClick={toggle} className="hidden sm:flex"><i class="fa-solid fa-xmark fa-lg"></i> </button> : <button onClick={toggle} className="hidden sm:flex"><i className="fa-solid fa-bars fa-lg"></i></button>}
