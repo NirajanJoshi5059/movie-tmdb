@@ -12,10 +12,13 @@ const App = () => {
     <Routes>
       <Route path="/" element={<RootLayOut />} >
         <Route index element={<HomePage />} />
-        <Route path="movie/:category" element={<MovieByCategory />} />
+        <Route path="movie/:category" element={<MovieByCategory />} >
+          {/* <Route path="page/:page" element={<MoviePage />} /> */}
+        </Route>
         <Route path="movieDetail/:id" element={<Detail />} />
         <Route path="movieSearch/:search" element={<Search />} />
-        <Route path="movie/:category/:page" element={<MoviePage />} />
+        <Route path="movie/:category/page/:page" element={<MoviePage />} />
+
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

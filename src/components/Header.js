@@ -11,7 +11,7 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-black text-white flex justify-between px-5 py-2 items-baseline grid grid-cols-4">
+    <header className="bg-black text-white flex justify-between px-5 py-2 items-baseline grid grid-cols-4 sticky top-0 z-10">
 
       <div>
         <NavLink to='/'> <h1>Sample Logo</h1> </NavLink>

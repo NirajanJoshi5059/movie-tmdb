@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router";
+import { Outlet, useNavigate, useParams } from "react-router";
 import { imageUrl } from "../features/constants";
 import { useGetMovieByCategoryQuery } from "../features/movieApi"
 import Loading from "./Loading";
@@ -34,13 +34,13 @@ const MovieByCategory = () => {
       </div>
 
       <div className="flex justify-center space-x-3 my-4">
-        <button  disabled={data?.page === 1 ? true : false}
+        <button disabled={data?.page === 1 ? true : false}
           className="bg-gray-500 text-white px-3 py-1 rounded-lg">Prev</button>
         <h1 className="text-xl">{data?.page}</h1>
-        <button onClick={() => nav(`/movie/now_playing/${data?.page + 1}`)}
+        <button onClick={() => nav(`/movie/${category?? 'now_playing'}/page/${data?.page + 1}`)}
           className="bg-black text-white px-3 py-1 rounded-lg">Next</button>
-
       </div>
+      <Outlet />
     </>
   )
 }
